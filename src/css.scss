@@ -1,0 +1,511 @@
+// BS Utility
+
+// Bootstrap
+// @import '../../_common/bootstrap-4.5.3/scss/functions';
+// @import '../../_common/bootstrap-4.5.3/scss/mixins';
+// @import '../../_common/bootstrap-4.5.3/scss/variables';
+
+@import url('https://fonts.googleapis.com/css2?family=Domine&family=Roboto:ital@0;1&display=swap');
+
+// Color Palette
+
+$primary:#611F73;
+$secondary:#222059;
+$accent:#035aa6;
+$dark: #02070D;
+$light: #f2a7c3;
+
+$success: #34B249;
+$error: #C91D2B;
+$warning: #E8B130;
+$l-gray: #F2F2F3;
+$m-gray: #C8CDD0;
+$d-gray: #415058;
+$black: #1F292E;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "light":      $light,
+  "dark":       $dark,
+  "success":    $success,
+  "info":       $m-gray,
+  "warning":    $warning,
+  "danger":     $error,
+);
+
+@import "../../_common/bootstrap-4.5.3/scss/bootstrap";
+
+
+
+// Fonts
+
+$font-display: 'Domine', serif;
+$font-text: 'Roboto', sans-serif;
+
+// BREAKPOINTS
+// Edit to use BS values
+$xl-break: "screen and (min-width:1200px)";
+$lg-break: "screen and (min-width:992px)";
+$md-break: "screen and (min-width:768px)";
+$sm-break: "screen and (min-width:576px)";
+$xs-break: "screen and (max-width:576px)";
+
+
+body {
+  background-color: $gray-100;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color .3s ease-in-out;
+}
+
+.wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+header {
+  background-color: $primary;
+  color: $light;
+  position: relative;
+  padding: .5rem;
+
+  h1 {
+    font-size: .75rem;
+    text-transform: uppercase;
+    text-align: right;
+    margin-bottom: 0;
+  }
+}
+
+.nav {
+  position: fixed;
+  left: 0;
+  top:0;
+  display: flex;
+  height: 100%;
+  z-index: 99;
+
+  &-action {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    a {
+      display: block;
+      padding: .5rem 1rem;
+      font-size: 1rem;
+      color: $light;
+      background-color: $primary;
+      // transition: all .3s ease-in-out;
+
+      &:hover {
+        background-color: $accent;
+      }
+    }
+
+    li {
+      display: block;
+
+      &:last-child {
+        position: fixed;
+        bottom:0;
+
+        a {
+          transition: none;
+        }
+      }
+    }
+  }
+}
+
+.hero {
+  background-color: $gray-800;
+  background-image: url(../img/hero.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  @media #{$lg-break} {
+    height: 550px;
+    justify-content: unset;
+    flex-direction: row;
+  }
+
+  &-title, &-slope {
+    width: 100%;
+  }
+
+  &-title {
+    padding: 1rem;
+    display: flex;
+    font-family: $font-display;
+    
+    @media #{$lg-break} {
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      font-size: 4rem !important;
+      color: $light;
+      text-shadow: 0px 3px 10px rgba($dark, 0.75);
+    }
+
+    @media #{$lg-break} {
+      width: 60%;
+    }
+  }
+
+  &-slope {
+    position: relative;
+    background-color: $secondary;
+  
+    @media #{$lg-break} {
+      width: 40%;
+      align-self: stretch;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: $secondary;
+      transform: skewX(-10deg);
+      top: 0;
+      left: -5rem;
+      position: absolute;
+    }
+  }
+
+  &-info {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: $light;
+  }
+
+  &-summary, &-meta, &-mood {
+    max-width: 450px;
+
+    // @media #{$lg-break} {
+    //   max-width: 450px;
+    // }
+  }
+  
+  &-summary {
+    //background: #f9f9f9;
+    border-left: 10px solid $light;
+    margin: 1rem;
+    padding: 1rem;
+    quotes: "\201C""\201D""\2018""\2019";
+
+    &:before {
+      color: $light;
+      content: open-quote;
+      font-size: 4em;
+      line-height: 0.1em;
+      margin-right: 0.25em;
+      vertical-align: -0.4em;
+    }
+
+    p {
+      display: inline;
+    }
+  }
+
+  &-meta, &-mood {
+    margin:1rem;
+    padding:0;
+    list-style-type: none;
+  }
+  
+  &-meta {
+    font-weight: bold;
+
+    .label {
+      text-transform: uppercase;
+      font-size: .75rem;
+      font-weight: 400;
+      vertical-align: text-top;
+    }
+  }
+
+  &-mood {
+    width: 100%;
+    padding-top: 2rem;
+    display: flex;
+    position: relative;
+
+    &::before {
+      border-top: 1px solid rgba($light, .25);
+      display: block;
+      position: absolute;
+      top: 0;
+      padding: .25rem 0;
+      content: 'Mood';
+      text-transform: uppercase;
+      font-size: .75rem;
+    }
+    
+    li {
+      margin: 0 1rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      a {
+        display: block;
+        font-size: 1.5rem;
+        color: $light;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+          opacity: .8;
+          text-decoration: none;
+        }
+
+        span {
+          font-size: 1rem;
+          vertical-align: text-bottom;
+          padding-left: .5rem;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: $primary;
+  color: $light;
+
+  &-content {
+    display: flex;
+    padding: 1rem;
+
+    .credit, .social-media {
+      width: 100%;
+      margin: 0;
+      text-align:center;
+
+      @media #{$md-break} {
+        width: 50%;
+        text-align: left;
+      }
+    }
+
+    .social-media {
+
+      @media #{$md-break} {
+        justify-content: flex-end;
+        margin: 0;
+      }
+
+    }
+  }
+}
+
+.main {
+  padding: 2rem 0;
+}
+
+.section {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 3.5rem;
+  font-size: 1.25rem;
+  font-family: $font-text;
+
+  transition: color .3s ease-in-out;
+
+  p {
+    margin-bottom: 2rem;
+    
+    &.dropcap::first-letter {
+      float: left;
+      font-size: 3.5rem;
+      line-height: 1;
+      margin: 0 1rem 0 0;
+    }
+  }
+  
+}
+
+// Fade IN
+
+@keyframes fadeIn {
+  0%   {opacity: 50%;}
+  100% {opacity: 100%;}
+}
+
+.scene {
+  width: 100%;
+  height: 750px;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $dark;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    filter: blur(5px);
+    transform: scale(1.05);
+    box-shadow: inset 0px 0px 100px 0px rgba($dark, .5);
+    z-index: -1;
+
+    @media #{$md-break} {
+      background-attachment: fixed;
+      height: 750px;
+    }
+  }
+
+  animation-name: fadeIn;
+  animation-duration: 1s;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  transition: opacity .3s ease-in-out;
+
+  &.pull-btn {
+    justify-content: flex-start;
+
+    // @media #{$lg-break} {
+    //   justify-content: flex-end;
+    // }
+  }
+
+
+
+   // Set up scenes
+
+  $scenes: (
+    'a': 'a',
+    'b': 'b',
+    'c': 'c',
+    'd': 'd',
+    'e': 'e',
+    'f': 'f',
+  );
+
+  @each $scene, $img in $scenes {
+    &-#{$scene}::before { background-image: url(../img/scene-#{$img}.jpg);}
+   }
+ 
+
+  &-btn {
+    display: block;
+    padding: .5rem 1rem;
+    margin: .5rem;
+    background-color: $secondary;
+    color: $light;
+    transition: all .5s ease-in-out;
+    text-transform: uppercase;
+    font-size: .75rem;
+
+    &:hover {
+      background-color: $primary;
+      color: $light;
+      text-decoration: none;
+    }
+  }
+}
+
+
+.social-media {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin-top: .5rem;
+
+  li {
+    display: block;
+    margin: 0 .5rem;
+    
+    a {
+      padding: .5rem;
+      color: lighten($secondary, 30%);
+      transition: all .3s ease-in-out;
+
+      &:hover {
+        color: lighten($accent, 30%);
+
+      }
+    }
+  }
+}
+
+//Modals
+
+.modal-body {
+  padding: 2rem;
+}
+
+// Buttons
+
+.btn {
+  background-color: $secondary;
+  border-color: $secondary;
+
+  &:hover{
+    background-color: $primary;
+    border-color: $primary;
+  }
+}
+
+// Dark Mode
+
+.dark-mode {
+  background-color: $dark;
+
+  .scene {
+    opacity: .8;
+  }
+
+  .section {
+    color: $light;
+  }
+
+  hr {
+    border-top-color: rgba($light, .5);
+  }
+
+  .modal-body {
+    background-color: $primary;
+    color: $light;
+  }
+}
+
+// Formatting
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  transition: border-top-color .3s ease-in-out;
+}
+
+@import '_texts.scss';
