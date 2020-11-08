@@ -1,0 +1,176 @@
+.conversation-a {
+  @include timestamp(a, '1', after, '6:12 PM');
+  @include timestamp(a, '2', after, '6:13 PM');
+  @include timestamp(a, '3', before, '6:17 PM');
+
+  .msg-text {
+    animation-duration: 15s; // need to be adjustable
+  }
+}
+
+// Key maps per convo
+// Prefix keyframe names
+// messages mapped to animation keyframe
+$conversation-a: (1: a-msg-1,
+  2: a-msg-2,
+  3: a-msg-3,
+);
+
+.play {
+  @each $msg, $animation in $conversation-a {
+    #a-msg-#{$msg} {
+      animation-name: $animation;
+    }
+  }
+}
+
+// Msg Heights
+$a-msg-1h: 110px+$offset;
+$a-msg-2h: 347px+$offset;
+$a-msg-3h: 110px+$offset;
+
+@keyframes a-msg-1 {
+  0% {
+    //Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  2% {
+    // Enter 
+    top: calc(#{$thread-height} - #{$a-msg-1h});
+    left: 0;
+    transform: scale(1);
+  }
+
+  6% {
+    // Pause
+    top: calc(#{$thread-height} - #{$a-msg-1h});
+  }
+
+  8% {
+    // Move
+    top: calc(#{$thread-height} - #{$a-msg-1h} - #{ $a-msg-2h});
+  }
+
+  30% {
+    // Pause
+    top: calc(#{$thread-height} - #{$a-msg-1h} - #{ $a-msg-2h});
+  }
+
+  32% {
+    // End Point
+    top: 0;
+    left: 0;
+  }
+
+  100% {
+    // Wait
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes a-msg-2 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  6% {
+    // Wait
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  8% {
+    // Enter
+    top: calc(#{$thread-height} - #{$a-msg-2h});
+    left: 0;
+    transform: scale(1);
+  }
+
+  30% {
+    // Pause
+    top: calc(#{$thread-height} - #{$a-msg-2h});
+  }
+
+  32% {
+    // Move, End Point
+    top: calc(#{$thread-height} - #{$a-msg-2h} - #{$a-msg-1h} - #{$msg-spacing} - #{$msg-spacing} - #{$offset});
+  }
+
+  100% {
+    // Wait
+    top: calc(#{$thread-height} - #{$a-msg-2h} - #{$a-msg-1h} - #{$msg-spacing} - #{$msg-spacing}  - #{$offset});
+  }
+}
+
+@keyframes a-msg-3 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  30% {
+    // Wait
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  32% {
+    // Enter, End Point
+    top: calc(#{$thread-height} - #{$a-msg-3h} - #{$msg-spacing} - #{$msg-spacing});
+    right: 0;
+    transform: scale(1);
+  }
+
+  100% {
+    // Wait
+    top: calc(#{$thread-height} - #{$a-msg-3h} - #{$msg-spacing} - #{$msg-spacing});
+    right: 0;
+    transform: scale(1);
+  }
+}
+
+
+@media #{$xxs-break} {
+  $a-msg-2h: 318px + $offset;
+
+  @keyframes a-msg-3 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+  
+    30% {
+      // Wait
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+  
+    32% {
+      // Enter, End Point
+      top: calc(#{$thread-height} - #{$a-msg-3h} - #{$msg-spacing} - #{$msg-spacing} - #{$msg-spacing} - #{$offset});
+      right: 0;
+      transform: scale(1);
+    }
+  
+    100% {
+      // Wait
+      top: calc(#{$thread-height} - #{$a-msg-3h} - #{$msg-spacing} - #{$msg-spacing} - #{$msg-spacing} - #{$offset});
+      right: 0;
+      transform: scale(1);
+    }
+  }
+}

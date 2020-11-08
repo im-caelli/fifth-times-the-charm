@@ -1,0 +1,409 @@
+.conversation-f {
+  @include timestamp(f, '1', after, '9:55 PM');
+  @include timestamp(f, '2', before, '9:56 PM');
+  @include timestamp(f, '3', after, '9:57 PM');
+  @include timestamp(f, '4', before, '9:58 PM');
+
+  .msg-text {
+    animation-duration: 15s; // need to be adjustable
+  }
+}
+
+// Key maps per convo
+// Prefix keyframe names
+// messages mapped to animation keyframe
+$conversation-f: (1: f-msg-1,
+  2: f-msg-2,
+  3: f-msg-3,
+  4: f-msg-4,
+);
+
+.play {
+
+  @each $msg,
+  $animation in $conversation-f {
+    #f-msg-#{$msg} {
+      animation-name: $animation;
+    }
+  }
+}
+
+// Msg Heights
+$f-msg-1h: 107px + $offset;
+$f-msg-2h: 107px + $offset;
+$f-msg-3h: 347px + $offset;
+$f-msg-4h: 107px + $offset;
+
+@keyframes f-msg-1 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  2% {
+    // Enter
+    top: calc(#{$thread-height} - #{$f-msg-1h});
+    left: 0;
+    transform: scale(1);
+  }
+
+  15% {
+    // Pause
+    top: calc(#{$thread-height} - #{$f-msg-1h});
+  }
+
+  17% {
+    // Move 
+    top: calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h});
+  }
+
+  30% {
+    // Pause
+    top: calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h});
+  }
+
+  32% {
+    // Move
+    top:calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h} - #{$f-msg-3h});
+  }
+
+  45% {
+    // Pause
+    top:calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h} - #{ $f-msg-3h});
+  }
+
+  47% {
+    // Move
+    top:calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h} - #{ $f-msg-3h} - #{ $f-msg-4h} - #{$msg-spacing});
+  }
+
+  60% {
+    // End Point
+    top:calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h} - #{ $f-msg-3h} - #{ $f-msg-4h} - #{$msg-spacing});
+  }
+
+  100% {
+    // Wait
+    top:calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h} - #{ $f-msg-3h} - #{ $f-msg-4h} - #{$msg-spacing});
+    left: 0;
+  }
+}
+
+@keyframes f-msg-2 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  15% {
+    // Wait
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  17% {
+    // Enter
+    top: calc(#{$thread-height} - #{$f-msg-2h});
+    right: 0;
+    transform: scale(1);
+  }
+
+  30% {
+    // Pause
+    top: calc(#{$thread-height} - #{$f-msg-2h});
+  }
+
+  32% {
+    // Move
+    top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h});
+  }
+
+  45% {
+    // Pause
+    top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h});
+  }
+
+  47% {
+    // Move
+    top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h} - #{$f-msg-4h});
+  }
+
+  60% {
+    // End Point
+    top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h} - #{$f-msg-4h});
+  }
+
+  100% {
+    // Wait
+    top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h} - #{$f-msg-4h});
+    right: 0;
+  }
+}
+
+@keyframes f-msg-3 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  30% {
+    // Wait
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  32% {
+    // Enter
+    top: calc(#{$thread-height} - #{$f-msg-3h});
+    left: 0;
+    transform: scale(1);
+  }
+
+  45% {
+    // Pause
+    top: calc(#{$thread-height} - #{$f-msg-3h});
+  }
+
+  47% {
+    // Move
+    top: calc(#{$thread-height} - #{$f-msg-3h} - #{$f-msg-4h});
+  }
+
+  60% {
+    // End Point
+    top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h});
+  }
+
+  100% {
+    // Wait
+    top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h});
+    left: 0;
+  }
+}
+
+@keyframes f-msg-4 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  45% {
+    // Wait
+    top: calc(#{$thread-height} - #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  47% {
+    // Enter, End Point
+    top: calc(#{$thread-height} - #{$f-msg-4h});
+    right: 0;
+    transform: scale(1);
+  }
+
+  100% {
+    // Wait
+    top: calc(#{$thread-height} - #{$f-msg-4h});
+    right: 0;
+  }
+}
+
+@media #{$xxs-break} {
+  $f-msg-2h: 85px + $offset;
+  $f-msg-3h: 318px + $offset;
+  $f-msg-4h: 85px + $offset;
+
+  @keyframes f-msg-1 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      left: -4em;
+      transform: scale(0);
+    }
+  
+    2% {
+      // Enter
+      top: calc(#{$thread-height} - #{$f-msg-1h});
+      left: 0;
+      transform: scale(1);
+    }
+  
+    15% {
+      // Pause
+      top: calc(#{$thread-height} - #{$f-msg-1h});
+    }
+  
+    17% {
+      // Move 
+      top: calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h});
+    }
+  
+    30% {
+      // Pause
+      top: calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h});
+    }
+  
+    32% {
+      // Move
+      top:calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h} - #{$f-msg-3h});
+    }
+  
+    45% {
+      // Pause
+      top:calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h} - #{ $f-msg-3h});
+    }
+  
+    47% {
+      // Move
+      top:calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h} - #{ $f-msg-3h} - #{ $f-msg-4h} - #{$msg-spacing});
+    }
+  
+    60% {
+      // End Point
+      top:calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h} - #{ $f-msg-3h} - #{ $f-msg-4h} - #{$msg-spacing});
+    }
+  
+    100% {
+      // Wait
+      top:calc(#{$thread-height} - #{$f-msg-1h} - #{$f-msg-2h} - #{ $f-msg-3h} - #{ $f-msg-4h} - #{$msg-spacing});
+      left: 0;
+    }
+  }
+  
+  @keyframes f-msg-2 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+  
+    15% {
+      // Wait
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+  
+    17% {
+      // Enter
+      top: calc(#{$thread-height} - #{$f-msg-2h});
+      right: 0;
+      transform: scale(1);
+    }
+  
+    30% {
+      // Pause
+      top: calc(#{$thread-height} - #{$f-msg-2h});
+    }
+  
+    32% {
+      // Move
+      top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h});
+    }
+  
+    45% {
+      // Pause
+      top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h});
+    }
+  
+    47% {
+      // Move
+      top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h} - #{$f-msg-4h});
+    }
+  
+    60% {
+      // End Point
+      top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h} - #{$f-msg-4h});
+    }
+  
+    100% {
+      // Wait
+      top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h} - #{$f-msg-4h});
+      right: 0;
+    }
+  }
+  
+  @keyframes f-msg-3 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      left: -4em;
+      transform: scale(0);
+    }
+  
+    30% {
+      // Wait
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      left: -4em;
+      transform: scale(0);
+    }
+  
+    32% {
+      // Enter
+      top: calc(#{$thread-height} - #{$f-msg-3h});
+      left: 0;
+      transform: scale(1);
+    }
+  
+    45% {
+      // Pause
+      top: calc(#{$thread-height} - #{$f-msg-3h});
+    }
+  
+    47% {
+      // Move
+      top: calc(#{$thread-height} - #{$f-msg-3h} - #{$f-msg-4h});
+    }
+  
+    60% {
+      // End Point
+      top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h});
+    }
+  
+    100% {
+      // Wait
+      top: calc(#{$thread-height} - #{$f-msg-2h} - #{$f-msg-3h});
+      left: 0;
+    }
+  }
+  
+  @keyframes f-msg-4 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+  
+    45% {
+      // Wait
+      top: calc(#{$thread-height} - #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+  
+    47% {
+      // Enter, End Point
+      top: calc(#{$thread-height} - #{$f-msg-4h});
+      right: 0;
+      transform: scale(1);
+    }
+  
+    100% {
+      // Wait
+      top: calc(#{$thread-height} - #{$f-msg-4h});
+      right: 0;
+    }
+  }
+}
