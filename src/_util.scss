@@ -1,0 +1,58 @@
+// BS Utility
+
+// Bootstrap
+// @import '../../_common/bootstrap-4.5.3/scss/functions';
+// @import '../../_common/bootstrap-4.5.3/scss/mixins';
+// @import '../../_common/bootstrap-4.5.3/scss/variables';
+
+@import url('https://fonts.googleapis.com/css2?family=Domine&Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+
+// Color Palette
+
+$primary:#611F73;
+$secondary:#222059;
+$accent:#035aa6;
+$dark: #02070D;
+$light: #f2a7c3;
+
+$success: #34B249;
+$error: #C91D2B;
+$warning: #E8B130;
+$l-gray: #F2F2F3;
+$m-gray: #C8CDD0;
+$d-gray: #415058;
+$black: #1F292E;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "light":      $light,
+  "dark":       $dark,
+  "success":    $success,
+  "info":       $m-gray,
+  "warning":    $warning,
+  "danger":     $error,
+);
+
+// Fonts
+
+$font-display: 'Domine', serif;
+$font-text: 'Roboto', sans-serif;
+
+// BREAKPOINTS
+// Edit to use BS values
+$xl-break: "screen and (min-width:1200px)";
+$lg-break: "screen and (min-width:992px)";
+$md-break: "screen and (min-width:768px)";
+$sm-break: "screen and (min-width:576px)";
+$xs-break: "screen and (max-width:576px)";
+$xxs-break: "screen and (max-width:414px)";
+
+// Box Shadow
+@mixin box-shadow {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+    0 2px 2px rgba(0,0,0,0.12), 
+    0 4px 4px rgba(0,0,0,0.12), 
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+}

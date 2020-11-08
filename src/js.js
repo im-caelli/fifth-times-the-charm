@@ -1,22 +1,24 @@
 $(document).ready(function(){
 
-  // Back to Top
+  // Back to Top & Waypoints
   $('#back-to-top').hide();
+  $('#waypoints').hide();
 
   $(window).scroll(function() {
 		if($(this).scrollTop() > 600) {
-			$('#back-to-top').fadeIn();
+      $('#back-to-top').fadeIn();
+      $('#waypoints').fadeIn();
 		} else {
-			$('#back-to-top').fadeOut();
+      $('#back-to-top').fadeOut();
+      $('#waypoints').fadeOut();
 		}
 	});
 
 	$('#back-to-top').click(function() {
 		$('body,html').animate({scrollTop:0},800);
   });
-
+  
   // Trigger Animation
-
   ;(function($, win) {
     $.fn.inViewport = function(cb) {
        return this.each(function(i,el){
@@ -30,6 +32,12 @@ $(document).ready(function(){
     };
   }(jQuery, window));
   
+
+  // Accessibility Text
+  $('.msg-content').prepend('<span class="sr-only">Start of text.</span>');
+  $('.msg-content').append('<span class="sr-only">End of text.</span>');
+  $('.msg-receive').prepend('<span class="sr-only">Asami:</span>');
+  $('.msg-send').prepend('<span class="sr-only">Korra:</span>');
   
   
   $(".frame").inViewport(function(px){
@@ -40,18 +48,23 @@ $(document).ready(function(){
       }
   });
 
-  // Modal
+  // Gallery 
 
+  // $('.carousel').carousel('pause');
+
+
+  // Modal
+  
   // $('.modal-open').css('padding-right', '0');
 
-  // $('.modal').on('shown.bs.modal', function (e) {
+  // $('.modal').on('show.bs.modal', function (e) {
   //   var hasScrollbar = window.innerWidth > document.documentElement.clientWidth;
 
   //   if (hasScrollbar) {
   //     $('.modal-open').css('padding-right', '0px');
   //     console.log('true');
   //   } else {
-  //     $('.modal-open').css('padding-right', '0px');
+  //     $('.modal-open').css('padding-right', '15px');
   //     console.log('false');
   //   }
 

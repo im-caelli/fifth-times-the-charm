@@ -1,60 +1,21 @@
-// BS Utility
 
-// Bootstrap
-// @import '../../_common/bootstrap-4.5.3/scss/functions';
-// @import '../../_common/bootstrap-4.5.3/scss/mixins';
-// @import '../../_common/bootstrap-4.5.3/scss/variables';
 
-@import url('https://fonts.googleapis.com/css2?family=Domine&family=Roboto:ital@0;1&display=swap');
-
-// Color Palette
-
-$primary:#611F73;
-$secondary:#222059;
-$accent:#035aa6;
-$dark: #02070D;
-$light: #f2a7c3;
-
-$success: #34B249;
-$error: #C91D2B;
-$warning: #E8B130;
-$l-gray: #F2F2F3;
-$m-gray: #C8CDD0;
-$d-gray: #415058;
-$black: #1F292E;
-
-$theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "light":      $light,
-  "dark":       $dark,
-  "success":    $success,
-  "info":       $m-gray,
-  "warning":    $warning,
-  "danger":     $error,
-);
-
+@import 'util';
 @import "../../_common/bootstrap-4.5.3/scss/bootstrap";
 
 
-
-// Fonts
-
-$font-display: 'Domine', serif;
-$font-text: 'Roboto', sans-serif;
-
-// BREAKPOINTS
-// Edit to use BS values
-$xl-break: "screen and (min-width:1200px)";
-$lg-break: "screen and (min-width:992px)";
-$md-break: "screen and (min-width:768px)";
-$sm-break: "screen and (min-width:576px)";
-$xs-break: "screen and (max-width:576px)";
-
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: $gray-100;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: $font-text, Arial, Helvetica;
+  font-size: 14px;
+  color: $black;
+  position: relative;
+  height: 100%;
+  overflow-y: scroll;
   transition: background-color .3s ease-in-out;
 }
 
@@ -106,7 +67,7 @@ header {
       }
     }
 
-    li {
+    li:not(.nav-waypoints li) {
       display: block;
 
       &:last-child {
@@ -116,6 +77,38 @@ header {
         a {
           transition: none;
         }
+      }
+    }
+  }
+
+  &-waypoints {
+
+    &-container {
+      display: flex !important;
+      flex: 1 1 auto;
+      justify-content: center;
+      align-items: center;
+      // display: block;
+      // height: 90%;
+      // position: relative;
+    }
+
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    a {
+      color: $light;
+      background-color: transparent;
+      padding: 1rem;
+      font-size: .25rem;
+      text-shadow: 0px 0px 2px rgba($secondary, 1);
+      &:hover, &:active, &:focus, &.active {
+        color:$accent;
+        background-color: transparent;
       }
     }
   }
@@ -157,6 +150,16 @@ header {
       font-size: 4rem !important;
       color: $light;
       text-shadow: 0px 3px 10px rgba($dark, 0.75);
+
+      @include media-breakpoint-between(lg, xl)  {
+         max-width: 450px;
+      }
+
+      @media screen and (min-width: 1490px)  {
+        // specific fix
+        max-width: none;
+      }
+
     }
 
     @media #{$lg-break} {
@@ -193,7 +196,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    color: $light;
+    color: $m-gray;
   }
 
   &-summary, &-meta, &-mood {
@@ -206,13 +209,13 @@ header {
   
   &-summary {
     //background: #f9f9f9;
-    border-left: 10px solid $light;
+    border-left: 10px solid $m-gray;
     margin: 1rem;
     padding: 1rem;
     quotes: "\201C""\201D""\2018""\2019";
 
     &:before {
-      color: $light;
+      color: $m-gray;
       content: open-quote;
       font-size: 4em;
       line-height: 0.1em;
@@ -247,9 +250,10 @@ header {
     padding-top: 2rem;
     display: flex;
     position: relative;
+    z-index: 100;
 
     &::before {
-      border-top: 1px solid rgba($light, .25);
+      border-top: 1px solid rgba($m-gray, .25);
       display: block;
       position: absolute;
       top: 0;
@@ -275,6 +279,7 @@ header {
         &:hover {
           opacity: .8;
           text-decoration: none;
+          color: $l-gray;
         }
 
         span {
@@ -287,9 +292,35 @@ header {
   }
 }
 
+.social-media {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin-top: .5rem;
+
+  li {
+    display: block;
+    margin: 0 .5rem;
+    
+    a {
+      padding: .5rem;
+      color: $primary;
+      transition: all .3s ease-in-out;
+
+      &:hover {
+        color: $accent;
+
+      }
+    }
+  }
+}
+
+
 .footer {
   background-color: $primary;
-  color: $light;
+  color: $l-gray;
 
   &-content {
     display: flex;
@@ -306,13 +337,55 @@ header {
       }
     }
 
-    .social-media {
+    .credit {
+      font-size: .75rem;
+      a {
 
+        color: $light;
+        text-decoration: underline;
+
+        &:hover {
+          color: $m-gray;
+          text-decoration: none;
+        }
+
+        &.kofi {
+          display: block;
+          margin: .5rem 0;
+  
+          @media #{$md-break} {
+            display: inline-block;
+          }
+  
+          &:hover {
+            opacity: .8;
+          }
+
+          img {
+            height: 25px;
+          }
+        }
+        
+      }
+    }
+
+    .social-media {
+      align-items: center;
       @media #{$md-break} {
         justify-content: flex-end;
         margin: 0;
       }
 
+      a {
+        padding: .5rem;
+        color: $light;
+        transition: all .3s ease-in-out;
+  
+        &:hover {
+          color: $l-gray;
+  
+        }
+      }
     }
   }
 }
@@ -323,9 +396,9 @@ header {
 
 .section {
   max-width: 1000px;
-  margin: 2rem auto;
+  margin: 1rem auto;
   padding: 0 3.5rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-family: $font-text;
 
   transition: color .3s ease-in-out;
@@ -333,14 +406,23 @@ header {
   p {
     margin-bottom: 2rem;
     
-    &.dropcap::first-letter {
-      float: left;
-      font-size: 3.5rem;
-      line-height: 1;
-      margin: 0 1rem 0 0;
+    &.dropcap {
+      margin-top: 2rem;
+      &::first-letter {
+        float: left;
+        font-size: 3.5rem;
+        line-height: 1;
+        margin: 0 1rem 0 0;
+      }
     }
   }
   
+  h2 {
+    font-family: $font-display;
+    color: $secondary;
+    text-align: center;
+    // margin-bottom: 4rem;
+  }
 }
 
 // Fade IN
@@ -353,9 +435,13 @@ header {
 .scene {
   width: 100%;
   height: 750px;
-  padding: 1rem;
+  padding: 1rem 3rem;
   position: relative;
   overflow: hidden;
+
+  @media #{$xxs-break} {
+    padding-right: 1rem;
+  }
 
   &::before {
     content: '';
@@ -364,7 +450,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: $dark;
+    background-color: $secondary;
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
@@ -389,32 +475,6 @@ header {
 
   transition: opacity .3s ease-in-out;
 
-  &.pull-btn {
-    justify-content: flex-start;
-
-    // @media #{$lg-break} {
-    //   justify-content: flex-end;
-    // }
-  }
-
-
-
-   // Set up scenes
-
-  $scenes: (
-    'a': 'a',
-    'b': 'b',
-    'c': 'c',
-    'd': 'd',
-    'e': 'e',
-    'f': 'f',
-  );
-
-  @each $scene, $img in $scenes {
-    &-#{$scene}::before { background-image: url(../img/scene-#{$img}.jpg);}
-   }
- 
-
   &-btn {
     display: block;
     padding: .5rem 1rem;
@@ -431,38 +491,67 @@ header {
       text-decoration: none;
     }
   }
-}
 
-
-.social-media {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-  margin-top: .5rem;
-
-  li {
-    display: block;
-    margin: 0 .5rem;
+  &.pull-btn {
+    justify-content: flex-start;
     
-    a {
-      padding: .5rem;
-      color: lighten($secondary, 30%);
-      transition: all .3s ease-in-out;
-
-      &:hover {
-        color: lighten($accent, 30%);
-
-      }
+    @media #{$xxs-break} {
+      justify-content: flex-end;
     }
   }
+
+   // Set up scenes
+  $scenes: (
+    'a': 'a',
+    'b': 'b',
+    'c': 'c',
+    'd': 'd',
+    'e': 'e',
+    'f': 'f',
+  );
+
+  @each $scene, $img in $scenes {
+    &-#{$scene}::before { background-image: url(../img/scene-#{$img}.jpg);}
+
+    @media #{$xs-break} {
+      &-#{$scene}::before { background-image: url(../img/scene-#{$img}-sm.jpg);}
+    }
+   }
 }
+
+
 
 //Modals
 
 .modal-body {
   padding: 2rem;
+}
+
+// Gallery
+.gallery {
+  width: 95%;
+  max-width: none;
+  margin: .5rem auto;
+
+  &-img {
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &-btn {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    background-color: $primary;
+    color: $light;
+    display: block;
+    padding: .25rem .5rem;
+    line-height: 1;
+    z-index: $zindex-tooltip;
+  }
 }
 
 // Buttons
@@ -487,17 +576,47 @@ header {
   }
 
   .section {
-    color: $light;
+    color: $m-gray;
+
+    h2 {
+      color: $primary;
+    }
   }
 
   hr {
     border-top-color: rgba($light, .5);
   }
 
-  .modal-body {
-    background-color: $primary;
-    color: $light;
+  .modal-header {
+    background-color: $secondary;
+    color: $m-gray;
+    border-color: $secondary;
+
+    .close {
+      color: $m-gray;
+    }
   }
+
+  .modal-content {
+    background-color: $dark;
+    color: $m-gray;
+
+    .social-media {
+      a {
+        color: $light;
+  
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+
+    a {
+      color: $light;
+    }
+  }
+
+  
 }
 
 // Formatting
