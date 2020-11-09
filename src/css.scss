@@ -519,8 +519,6 @@ header {
    }
 }
 
-
-
 //Modals
 
 .modal-body {
@@ -551,6 +549,12 @@ header {
     padding: .25rem .5rem;
     line-height: 1;
     z-index: $zindex-tooltip;
+
+    &:hover {
+      color: $light;
+      text-decoration: none;
+      background-color: $accent;
+    }
   }
 }
 
@@ -566,56 +570,12 @@ header {
   }
 }
 
-// Dark Mode
-
-.dark-mode {
-  background-color: $dark;
-
-  .section {
-    color: $m-gray;
-
-    h2 {
-      color: $primary;
-    }
-  }
-
-  hr {
-    border-top-color: rgba($light, .5);
-  }
-
-  .modal-header {
-    background-color: $secondary;
-    color: $m-gray;
-    border-color: $secondary;
-
-    .close {
-      color: $m-gray;
-    }
-  }
-
-  .modal-content {
-    background-color: $dark;
-    color: $m-gray;
-
-    .social-media {
-      a {
-        color: $light;
-  
-        &:hover {
-          color: $accent;
-        }
-      }
-    }
-
-    a {
-      color: $light;
-    }
-  }
-
-  
-}
-
 // Formatting
+
+.plain {
+  font-style: normal;
+  font-weight: 400;
+}
 
 hr {
   margin-top: 2rem;
@@ -623,7 +583,7 @@ hr {
   transition: border-top-color .3s ease-in-out;
 }
 
-// Transcript
+// ---------- Transcript ---------- //
 
 .conversation-text {
   display: block;
@@ -631,7 +591,7 @@ hr {
   margin: auto;
 
   @media #{$md-break} {
-    width: 75%;
+    width: 50%;
   }
 
   &-btn {
@@ -674,9 +634,10 @@ hr {
     display: flex;
     font-size: 14px;
     font-style: italic;
+    color: $d-gray;
     border-bottom: 1px solid  rgba(31,41,46,.1);
     padding-bottom: 2rem;
-    
+
     ul {
       margin: auto;
       padding: 0;
@@ -695,6 +656,83 @@ hr {
           font-weight: 400;
         }
       }
+    }
+  }
+}
+
+// ---------- Dark Mode ---------- //
+
+.dark-mode {
+  background-color: $dark;
+
+  .section {
+    color: $m-gray;
+    
+    a {
+      color: $light;
+      &:hover {
+        color:$l-gray;
+      }
+    }
+
+    h2 {
+      color: $primary;
+    }
+  }
+
+  hr {
+    border-top-color: rgba($light, .5);
+  }
+
+  .modal-header {
+    background-color: $secondary;
+    color: $m-gray;
+    border-color: $secondary;
+
+    .close {
+      color: $m-gray;
+    }
+  }
+
+  .modal-content {
+    background-color: $dark;
+    color: $m-gray;
+
+    .social-media {
+      a {
+        color: $light;
+  
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+
+    a {
+      color: $light;
+    }
+  }
+
+  .conversation-text {
+    &-btn {
+      &::before {
+        background: linear-gradient(270deg, rgba($light,1) 0%, rgba(255,255,255,0) 100%);
+      }
+      &::after  {
+        background: linear-gradient(90deg, rgba($light,1) 0%, rgba(255,255,255,0) 100%);
+      }
+
+      &:hover {
+        &::before {
+          background: linear-gradient(270deg, rgba($l-gray,1) 0%, rgba(255,255,255,0) 100%);
+        }
+        &::after  {
+          background: linear-gradient(90deg, rgba($l-gray,1) 0%, rgba(255,255,255,0) 100%);
+        }
+      }
+    }
+    &-content {
+      color: $m-gray;
     }
   }
 }
