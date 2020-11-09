@@ -460,9 +460,10 @@ header {
     z-index: -1;
 
     @media #{$md-break} {
-      background-attachment: fixed;
+      // background-attachment: fixed;
       height: 750px;
     }
+  
   }
 
   animation-name: fadeIn;
@@ -523,6 +524,10 @@ header {
 
 .modal-body {
   padding: 2rem;
+  
+  a {
+    font-weight: 700;
+  }
 }
 
 // Gallery
