@@ -58,7 +58,7 @@ The scenes for this project is set up to emulate text conversations.
   - All photos in the same conversation are set up as carousel in the same modal.
 - **Transcripts** (Read the convo in text)
   - If you find the animations annoying or disorienting to read from, you can click on "read in text" to open/collapse the transcript.
-- It is closed by default.
+  - It is closed by default.
 
 ## Socials
 
