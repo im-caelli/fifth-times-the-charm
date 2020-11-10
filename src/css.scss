@@ -143,13 +143,13 @@ header {
   }
 
   &-title {
-    padding: 1rem;
+    padding: 1rem 3.5rem;
     display: flex;
     font-family: $font-display;
     
-    @media #{$lg-break} {
-      padding: 2rem 1rem;
-    }
+    // @media #{$lg-break} {
+    //   padding: 2rem 1rem;
+    // }
 
     h2 {
       font-size: 4rem !important;
@@ -202,6 +202,11 @@ header {
     justify-content: center;
     align-items: flex-start;
     color: $m-gray;
+    padding: 0 2.5rem;
+
+    @media #{$lg-break} {
+      padding: 0;
+    }
   }
 
   &-summary, &-meta, &-mood {
@@ -255,7 +260,7 @@ header {
     padding-top: 2rem;
     display: flex;
     position: relative;
-    z-index: 100;
+    // z-index: 100;
 
     &::before {
       border-top: 1px solid rgba($m-gray, .25);
