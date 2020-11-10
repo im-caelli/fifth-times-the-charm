@@ -871,6 +871,7 @@ hr {
     // animation-iteration-count: infinite;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+    visibility: hidden;
 
     span {
       //display: block;
@@ -943,6 +944,11 @@ $thread-height: 650px;
 $offset: 10px;
 $msg-spacing: 1.5em;
 $msg-clearance: 100px;
+
+// Start point to avoid flash
+.play .msg-text {
+  visibility: visible;
+}
 
 // CONVERSATION A ------------------- //
 
