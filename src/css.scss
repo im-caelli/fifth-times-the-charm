@@ -897,7 +897,7 @@ hr {
     margin-right: 2rem;
 
     @media #{$xxs-break} {
-      margin-right: 1rem;
+      margin-right: 0;
     }
 
     span {
