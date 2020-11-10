@@ -3,7 +3,7 @@
 @import 'util';
 @import "../../_common/bootstrap-4.5.3/scss/bootstrap";
 
-
+// --- STYLES --- //
 html {
   scroll-behavior: smooth;
 }
@@ -748,6 +748,16 @@ hr {
 
 // ---------- Animations ---------- //
 
+
+// Box Shadow
+@mixin box-shadow {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+    0 2px 2px rgba(0,0,0,0.12), 
+    0 4px 4px rgba(0,0,0,0.12), 
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+}
+
 // Display Pic
 @mixin dp($side: null, $image) {
   &::#{$side} {
@@ -764,6 +774,8 @@ hr {
     border: 1px solid #C8CDD0;
     background-image: url(../img/#{$image}.jpg);
 
+    @include box-shadow();
+    
     @media #{$xxs-break} {
       width: 45px;
       height: 45px;
