@@ -32,12 +32,25 @@ $(document).ready(function(){
     };
   }(jQuery, window));
 
-  $(".frame").inViewport(function(px){
+  $('.frame').inViewport(function(px){
       if(px) {
-        $(this).addClass("play");
+        $(this).addClass('play');
       } else {
-        $(this).removeClass("play");
+        $(this).removeClass('play');
       }
+  });
+
+  $('.scene').each(function( index ) {
+    let replay = $(this).find('.replay');
+    let frame = $(this).find('.frame');
+    // console.log( index + ": " + $( this ).text() );
+    console.log(replay);
+    replay.on('click', function(){
+      frame.removeClass('play');
+      setTimeout(function(){ 
+        frame.addClass('play');
+      }, 500);
+    });
   });
 
   // Accessibility Text

@@ -51,8 +51,8 @@ The scenes for this project is set up to emulate text conversations.
 - **Animations**
   - The animation will only play if you are reach the appropriate section of the page.
   - The scenes range from 15-25 seconds in length.
-  - The scene will only play once. To replay an animation, scroll away and come back.
-  - No controls, sorry :(
+  - The scene will only play once. 
+  - To replay an animation,  you can click the Replay Button or scroll away a screena way and come back.
 - **View Art**
   - You can click the images Asami sends to view the photo in full! (Same function as the standard View Art Button)
   - All photos in the same conversation are set up as carousel in the same modal.
