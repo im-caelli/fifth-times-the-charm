@@ -66,31 +66,36 @@ header {
         background-color: $accent;
       }
     }
-
+    
     li:not(.nav-waypoints li) {
       display: block;
+    }
 
-      &:last-child {
-        position: fixed;
-        bottom:0;
-
-        a {
-          transition: none;
-        }
+    .btt {
+      position: fixed;
+      bottom:0;
+      a {
+        transition: none;
       }
     }
   }
 
   &-waypoints {
 
+    visibility: hidden;
+  
+    &.make-visible {
+      visibility: visible;
+    }
+
     &-container {
       display: flex !important;
       flex: 1 1 auto;
       justify-content: center;
       align-items: center;
-      // display: block;
-      // height: 90%;
-      // position: relative;
+      position: fixed;
+      top: 50%;
+      left: 1.5rem;
     }
 
     position: absolute;
