@@ -41,7 +41,7 @@ This one is a little more involved than my other project [Amorous](https://cael.
   - **Concept Art** (Image Icon) - Art dump of art featured in this project, visual boards, etc.
   - **Music** (Music Icon) - Link to a song or playlist that I probably had on repeat at somepoint of working on this.
 - **Scenes**
-  -**View Art Button** - See artwork in full.
+  - **View Art Button** - See artwork in full.
 
 
 #### Text Conversation
