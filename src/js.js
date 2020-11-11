@@ -43,8 +43,7 @@ $(document).ready(function(){
   $('.scene').each(function( index ) {
     let replay = $(this).find('.replay');
     let frame = $(this).find('.frame');
-    // console.log( index + ": " + $( this ).text() );
-    console.log(replay);
+
     replay.on('click', function(){
       frame.removeClass('play');
       setTimeout(function(){ 
