@@ -1,0 +1,863 @@
+.conversation-e {
+  @include timestamp(e, '1', before, '9:27 PM');
+  @include timestamp(e, '2', after, '9:29 PM');
+  @include timestamp(e, '3', before, '9:30 PM');
+  @include timestamp(e, '4', after, '9:31 PM');
+  @include timestamp(e, '5', before, '9:32 PM');
+  @include timestamp(e, '6', after, '9:35 PM');
+  @include timestamp(e, '7', before, '9:40 PM');
+
+  .msg-text {
+    animation-duration: 35s; // need to be adjustable
+  }
+}
+
+// Key maps per convo
+// Prefix keyframe names
+// messages mapped to animation keyframe
+$conversation-e: (
+  1: e-msg-1,
+  2: e-msg-2,
+  3: e-msg-3,
+  4: e-msg-4,
+  5: e-msg-5,
+  6: e-msg-6,
+  7: e-msg-7,
+);
+
+.play {
+  @each $msg, $animation in $conversation-e {
+    #e-msg-#{$msg} {
+      animation-name: $animation;
+    }
+  }
+}
+
+// Msg Heights
+$e-msg-1h: 107px+$offset;
+$e-msg-2h: 169px+$offset;
+$e-msg-3h: 107px+$offset;
+$e-msg-4h: 107px+$offset;
+$e-msg-5h: 107px+$offset;
+$e-msg-6h: 107px+$offset;
+$e-msg-7h: 107px+$offset;
+
+@keyframes e-msg-1 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  1% {
+    // Enter
+    top: calc(#{$thread-height} - #{$e-msg-1h});
+    right: 0;
+    transform: scale(1);
+  }
+
+  15% {
+    // Pause
+    top: calc(#{$thread-height} - #{$e-msg-1h});
+  }
+
+  16% {
+    // Move 
+    top: calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h});
+  }
+
+  25% {
+    // Pause
+    top: calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h});
+  }
+
+  26% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h});
+  }
+
+  35% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h});
+  }
+
+  36% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h});
+  }
+
+  45% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h});
+  }
+
+  46% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+  }
+
+  55% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+  }
+
+  56% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+  }
+
+  65% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+  }
+
+  66% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+  }
+
+  100% {
+    // Wait
+    top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+    right: 0;
+  }
+}
+
+@keyframes e-msg-2 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  15% {
+    // Wait
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  16% {
+    // Enter
+    top: calc(#{$thread-height} - #{$e-msg-2h});
+    left: 0;
+    transform: scale(1);
+  }
+
+  25% {
+    // Pause
+    top: calc(#{$thread-height} - #{$e-msg-2h});
+  }
+
+  26% {
+    // Move
+    top: calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h});
+  }
+
+  35% {
+    // Pause
+    top: calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h});
+  }
+
+  36% {
+    // Move
+    top: calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h});
+  }
+
+  45% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h});
+  }
+
+  46% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+  }
+
+  55% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+  }
+
+  56% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+  }
+
+  65% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+  }
+
+  66% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+  }
+
+  100% {
+    // Wait
+    top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+    left: 0;
+  }
+}
+
+@keyframes e-msg-3 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  25% {
+    // Wait
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  26% {
+    // Enter
+    top: calc(#{$thread-height} - #{$e-msg-3h});
+    right: 0;
+    transform: scale(1);
+  }
+
+  35% {
+    // Pause
+    top: calc(#{$thread-height} - #{$e-msg-3h});
+  }
+
+  36% {
+    // Move
+    top: calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h});
+  }
+
+  45% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h});
+  }
+
+  46% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+  }
+
+  55% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+  }
+
+  56% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+  }
+
+  65% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+  }
+
+  66% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+  }
+
+  100% {
+    // Wait
+    top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+    right: 0;
+  }
+}
+
+@keyframes e-msg-4 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  35% {
+    // Wait
+    top: calc(#{$thread-height} - #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  36% {
+    // Enter
+    top: calc(#{$thread-height} - #{$e-msg-4h});
+    left: 0;
+    transform: scale(1);
+  }
+
+  45% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-4h});
+  }
+
+  46% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h});
+  }
+
+  55% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h});
+  }
+
+  56% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+  }
+
+  65% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+  }
+
+  66% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+  }
+
+  100% {
+    // Wait
+    top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+    left: 0;
+  }
+}
+
+@keyframes e-msg-5 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  45% {
+    // Pause
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  46% {
+    // Move
+    top: calc(#{$thread-height} - #{$e-msg-5h});
+    right: 0;
+    transform: scale(1);
+  }
+
+  55% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-5h});
+  }
+
+  56% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-5h} - #{$e-msg-6h});
+  }
+
+  65% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-5h} - #{$e-msg-6h});
+  }
+
+  66% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+  }
+
+  100% {
+    // Wait
+    top:calc(#{$thread-height} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+    right: 0;
+  }
+}
+
+@keyframes e-msg-6 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  55% {
+    // Pause
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    left: -4em;
+    transform: scale(0);
+  }
+
+  56% {
+    // Move
+    top: calc(#{$thread-height} - #{$e-msg-6h});
+    left: 0;
+    transform: scale(1);
+  }
+
+  65% {
+    // Pause
+    top:calc(#{$thread-height} - #{$e-msg-6h});
+  }
+
+  66% {
+    // Move
+    top:calc(#{$thread-height} - #{$e-msg-6h} - #{$e-msg-7h});
+  }
+
+  100% {
+    // Wait
+    top:calc(#{$thread-height} - #{$e-msg-6h} - #{$e-msg-7h});
+    left: 0;
+  }
+}
+
+@keyframes e-msg-7 {
+  0% {
+    // Start Point
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  65% {
+    // Pause
+    top: calc(#{$thread-height} + #{$msg-clearance});
+    right: -4em;
+    transform: scale(0);
+  }
+
+  66% {
+    // Move
+    top: calc(#{$thread-height} - #{$e-msg-7h});
+    right: 0;
+    transform: scale(1);
+  }
+
+  100% {
+    // Wait
+    top: calc(#{$thread-height} - #{$e-msg-7h});
+    right: 0;
+    transform: scale(1);
+  }
+}
+
+@media #{$xxs-break} {
+  // Msg Heights
+  $e-msg-2h: 190px + $offset;
+  $e-msg-4h: 127px + $offset;
+
+  @keyframes e-msg-1 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+
+    1% {
+      // Enter
+      top: calc(#{$thread-height} - #{$e-msg-1h});
+      right: 0;
+      transform: scale(1);
+    }
+
+    15% {
+      // Pause
+      top: calc(#{$thread-height} - #{$e-msg-1h});
+    }
+
+    16% {
+      // Move 
+      top: calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h});
+    }
+
+    25% {
+      // Pause
+      top: calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h});
+    }
+
+    26% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h});
+    }
+
+    35% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h});
+    }
+
+    36% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h});
+    }
+
+    45% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h});
+    }
+
+    46% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+    }
+
+    55% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+    }
+
+    56% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+    }
+
+    65% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+    }
+
+    66% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+    }
+
+    100% {
+      // Wait
+      top:calc(#{$thread-height} - #{$e-msg-1h} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+      right: 0;
+    }
+  }
+
+  @keyframes e-msg-2 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      left: -4em;
+      transform: scale(0);
+    }
+
+    15% {
+      // Wait
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      left: -4em;
+      transform: scale(0);
+    }
+
+    16% {
+      // Enter
+      top: calc(#{$thread-height} - #{$e-msg-2h});
+      left: 0;
+      transform: scale(1);
+    }
+
+    25% {
+      // Pause
+      top: calc(#{$thread-height} - #{$e-msg-2h});
+    }
+
+    26% {
+      // Move
+      top: calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h});
+    }
+
+    35% {
+      // Pause
+      top: calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h});
+    }
+
+    36% {
+      // Move
+      top: calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h});
+    }
+
+    45% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h});
+    }
+
+    46% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+    }
+
+    55% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+    }
+
+    56% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+    }
+
+    65% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+    }
+
+    66% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+    }
+
+    100% {
+      // Wait
+      top:calc(#{$thread-height} - #{$e-msg-2h} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+      left: 0;
+    }
+  }
+
+  @keyframes e-msg-3 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+
+    25% {
+      // Wait
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+
+    26% {
+      // Enter
+      top: calc(#{$thread-height} - #{$e-msg-3h});
+      right: 0;
+      transform: scale(1);
+    }
+
+    35% {
+      // Pause
+      top: calc(#{$thread-height} - #{$e-msg-3h});
+    }
+
+    36% {
+      // Move
+      top: calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h});
+    }
+
+    45% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h});
+    }
+
+    46% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+    }
+
+    55% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h});
+    }
+
+    56% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+    }
+
+    65% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+    }
+
+    66% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+    }
+
+    100% {
+      // Wait
+      top:calc(#{$thread-height} - #{$e-msg-3h} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+      right: 0;
+    }
+  }
+
+  @keyframes e-msg-4 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      left: -4em;
+      transform: scale(0);
+    }
+
+    35% {
+      // Wait
+      top: calc(#{$thread-height} - #{$msg-clearance});
+      left: -4em;
+      transform: scale(0);
+    }
+
+    36% {
+      // Enter
+      top: calc(#{$thread-height} - #{$e-msg-4h});
+      left: 0;
+      transform: scale(1);
+    }
+
+    45% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-4h});
+    }
+
+    46% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h});
+    }
+
+    55% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h});
+    }
+
+    56% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+    }
+
+    65% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h});
+    }
+
+    66% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+    }
+
+    100% {
+      // Wait
+      top:calc(#{$thread-height} - #{$e-msg-4h} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+      left: 0;
+    }
+  }
+
+  @keyframes e-msg-5 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+
+    45% {
+      // Pause
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+
+    46% {
+      // Move
+      top: calc(#{$thread-height} - #{$e-msg-5h});
+      right: 0;
+      transform: scale(1);
+    }
+
+    55% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-5h});
+    }
+
+    56% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-5h} - #{$e-msg-6h});
+    }
+
+    65% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-5h} - #{$e-msg-6h});
+    }
+
+    66% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+    }
+
+    100% {
+      // Wait
+      top:calc(#{$thread-height} - #{$e-msg-5h} - #{$e-msg-6h} - #{$e-msg-7h});
+      right: 0;
+    }
+  }
+
+  @keyframes e-msg-6 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      left: -4em;
+      transform: scale(0);
+    }
+
+    55% {
+      // Pause
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      left: -4em;
+      transform: scale(0);
+    }
+
+    56% {
+      // Move
+      top: calc(#{$thread-height} - #{$e-msg-6h});
+      left: 0;
+      transform: scale(1);
+    }
+
+    65% {
+      // Pause
+      top:calc(#{$thread-height} - #{$e-msg-6h});
+    }
+
+    66% {
+      // Move
+      top:calc(#{$thread-height} - #{$e-msg-6h} - #{$e-msg-7h});
+    }
+
+    100% {
+      // Wait
+      top:calc(#{$thread-height} - #{$e-msg-6h} - #{$e-msg-7h});
+      left: 0;
+    }
+  }
+
+  @keyframes e-msg-7 {
+    0% {
+      // Start Point
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+
+    65% {
+      // Pause
+      top: calc(#{$thread-height} + #{$msg-clearance});
+      right: -4em;
+      transform: scale(0);
+    }
+
+    66% {
+      // Move
+      top: calc(#{$thread-height} - #{$e-msg-7h});
+      right: 0;
+      transform: scale(1);
+    }
+
+    100% {
+      // Wait
+      top: calc(#{$thread-height} - #{$e-msg-7h});
+      right: 0;
+      transform: scale(1);
+    }
+  }
+}

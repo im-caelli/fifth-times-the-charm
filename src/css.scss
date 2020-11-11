@@ -1,0 +1,995 @@
+
+
+@import 'util';
+@import "../../_common/bootstrap-4.5.3/scss/bootstrap";
+
+// --- STYLES --- //
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $gray-100;
+  font-family: $font-text, Arial, Helvetica;
+  font-size: 14px;
+  color: $black;
+  position: relative;
+  height: 100%;
+  overflow-y: scroll;
+  transition: background-color .3s ease-in-out;
+}
+
+.wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+header {
+  background-color: $primary;
+  color: $light;
+  position: relative;
+  padding: .5rem;
+
+  h1 {
+    font-size: .75rem;
+    text-transform: uppercase;
+    text-align: right;
+    margin-bottom: 0;
+  }
+}
+
+.nav {
+  position: fixed;
+  left: 0;
+  top:0;
+  display: flex;
+  height: 100%;
+  z-index: 99;
+
+  &-action {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    a {
+      display: block;
+      padding: .5rem 1rem;
+      font-size: 1rem;
+      color: $light;
+      background-color: $primary;
+      // transition: all .3s ease-in-out;
+
+      &:hover {
+        background-color: $accent;
+      }
+    }
+    
+    li:not(.nav-waypoints li) {
+      display: block;
+    }
+
+    .btt {
+      position: fixed;
+      bottom:0;
+      a {
+        transition: none;
+      }
+    }
+  }
+
+  &-waypoints {
+
+    visibility: hidden;
+  
+    &.make-visible {
+      visibility: visible;
+    }
+
+    &-container {
+      display: flex !important;
+      flex: 1 1 auto;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 50%;
+      left: 1.5rem;
+    }
+
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    a {
+      color: $light;
+      background-color: transparent;
+      padding: 1rem;
+      font-size: .25rem;
+      text-shadow: 0px 0px 2px rgba($secondary, 1);
+      &:hover, &:active, &:focus, &.active {
+        color:$accent;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.hero {
+  background-color: $gray-800;
+  background-image: url(../img/hero.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  @media #{$lg-break} {
+    height: 550px;
+    justify-content: unset;
+    flex-direction: row;
+  }
+
+  &-title, &-slope {
+    width: 100%;
+  }
+
+  &-title {
+    padding: 1rem 3.5rem;
+    display: flex;
+    font-family: $font-display;
+    
+    // @media #{$lg-break} {
+    //   padding: 2rem 1rem;
+    // }
+
+    h2 {
+      font-size: 4rem !important;
+      color: $light;
+      text-shadow: 0px 3px 10px rgba($dark, 0.75);
+
+      @include media-breakpoint-between(lg, xl)  {
+         max-width: 450px;
+      }
+
+      @media screen and (min-width: 1490px)  {
+        // specific fix
+        max-width: none;
+      }
+
+    }
+
+    @media #{$lg-break} {
+      width: 60%;
+    }
+  }
+
+  &-slope {
+    position: relative;
+    background-color: $secondary;
+  
+    @media #{$lg-break} {
+      width: 40%;
+      align-self: stretch;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: $secondary;
+      transform: skewX(-10deg);
+      top: 0;
+      left: -5rem;
+      position: absolute;
+    }
+  }
+
+  &-info {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: $m-gray;
+    padding: 0 2.5rem;
+
+    @media #{$lg-break} {
+      padding: 0;
+    }
+  }
+
+  &-summary, &-meta, &-mood {
+    max-width: 450px;
+
+    // @media #{$lg-break} {
+    //   max-width: 450px;
+    // }
+  }
+  
+  &-summary {
+    //background: #f9f9f9;
+    border-left: 10px solid $m-gray;
+    margin: 1rem;
+    padding: 1rem;
+    quotes: "\201C""\201D""\2018""\2019";
+
+    &:before {
+      color: $m-gray;
+      content: open-quote;
+      font-size: 4em;
+      line-height: 0.1em;
+      margin-right: 0.25em;
+      vertical-align: -0.4em;
+    }
+
+    p {
+      display: inline;
+    }
+  }
+
+  &-meta, &-mood {
+    margin:1rem;
+    padding:0;
+    list-style-type: none;
+  }
+  
+  &-meta {
+    font-weight: bold;
+
+    .label {
+      text-transform: uppercase;
+      font-size: .75rem;
+      font-weight: 400;
+      vertical-align: text-top;
+    }
+  }
+
+  &-mood {
+    width: 100%;
+    padding-top: 2rem;
+    display: flex;
+    position: relative;
+    // z-index: 100;
+
+    &::before {
+      border-top: 1px solid rgba($m-gray, .25);
+      display: block;
+      position: absolute;
+      top: 0;
+      padding: .25rem 0;
+      content: 'Mood';
+      text-transform: uppercase;
+      font-size: .75rem;
+    }
+    
+    li {
+      margin: 0 1rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      a {
+        display: block;
+        font-size: 1.5rem;
+        color: $light;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+          opacity: .8;
+          text-decoration: none;
+          color: $l-gray;
+        }
+
+        span {
+          font-size: 1rem;
+          vertical-align: text-bottom;
+          padding-left: .5rem;
+        }
+      }
+    }
+  }
+}
+
+.social-media {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin-top: .5rem;
+
+  li {
+    display: block;
+    margin: 0 .5rem;
+    
+    a {
+      padding: .5rem;
+      color: $primary;
+      transition: all .3s ease-in-out;
+
+      &:hover {
+        color: $accent;
+
+      }
+    }
+  }
+}
+
+
+.footer {
+  background-color: $primary;
+  color: $l-gray;
+
+  &-content {
+    display: flex;
+    padding: 1rem;
+
+    .credit, .social-media {
+      width: 100%;
+      margin: 0;
+      text-align:center;
+
+      @media #{$md-break} {
+        width: 50%;
+        text-align: left;
+      }
+    }
+
+    .credit {
+      font-size: .75rem;
+      a {
+
+        color: $light;
+        text-decoration: underline;
+
+        &:hover {
+          color: $m-gray;
+          text-decoration: none;
+        }
+
+        &.kofi {
+          display: block;
+          margin: .5rem 0;
+  
+          @media #{$md-break} {
+            display: inline-block;
+          }
+  
+          &:hover {
+            opacity: .8;
+          }
+
+          img {
+            height: 25px;
+          }
+        }
+        
+      }
+    }
+
+    .social-media {
+      align-items: center;
+      @media #{$md-break} {
+        justify-content: flex-end;
+        margin: 0;
+      }
+
+      a {
+        padding: .5rem;
+        color: $light;
+        transition: all .3s ease-in-out;
+  
+        &:hover {
+          color: $l-gray;
+  
+        }
+      }
+    }
+  }
+}
+
+.main {
+  padding: 2rem 0;
+}
+
+.section {
+  max-width: 1000px;
+  margin: 1rem auto;
+  padding: 0 3.5rem;
+  font-size: 1rem;
+  font-family: $font-text;
+
+  transition: color .3s ease-in-out;
+
+  p {
+    margin-bottom: 2rem;
+    
+    &.dropcap {
+      margin-top: 2rem;
+      &::first-letter {
+        float: left;
+        font-size: 3rem;
+        line-height: 1;
+        margin: 0 1rem 0 0;
+      }
+    }
+  }
+  
+  h2 {
+    font-family: $font-display;
+    color: $secondary;
+    text-align: center;
+    // margin-bottom: 4rem;
+  }
+}
+
+// Fade IN
+
+@keyframes fadeIn {
+  0%   {opacity: 50%;}
+  100% {opacity: 100%;}
+}
+
+.scene {
+  width: 100%;
+  height: 750px;
+  padding: 1rem 3rem;
+  position: relative;
+  overflow: hidden;
+
+  @media #{$xxs-break} {
+    padding-right: 1rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $secondary;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    filter: blur(5px);
+    transform: scale(1.05);
+    box-shadow: inset 0px 0px 100px 0px rgba($dark, .5);
+    z-index: -1;
+
+    @media #{$md-break} {
+      // background-attachment: fixed;
+      height: 750px;
+    }
+  
+  }
+
+  animation-name: fadeIn;
+  animation-duration: 1s;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  transition: opacity .3s ease-in-out;
+
+  &-ctrl {
+    display: flex;
+  }
+
+  &-btn {
+    display: block;
+    padding: .5rem 1rem;
+    // margin: .5rem;
+    background-color: $secondary;
+    color: $light;
+    transition: all .5s ease-in-out;
+    text-transform: uppercase;
+    font-size: .75rem;
+
+    &:hover {
+      background-color: $primary;
+      color: $light;
+      text-decoration: none;
+    }
+  }
+
+  &.pull-btn {
+    justify-content: flex-start;
+    
+    @media #{$xxs-break} {
+      justify-content: flex-end;
+    }
+  }
+
+   // Set up scenes
+  $scenes: (
+    'a': 'a',
+    'b': 'b',
+    'c': 'c',
+    'd': 'd',
+    'e': 'e',
+    'f': 'f',
+  );
+
+  @each $scene, $img in $scenes {
+    &-#{$scene}::before { background-image: url(../img/scene-#{$img}.jpg);}
+
+    @media #{$xs-break} {
+      &-#{$scene}::before { background-image: url(../img/scene-#{$img}-sm.jpg);}
+    }
+   }
+}
+
+//Modals
+
+.modal-body {
+  padding: 2rem;
+  
+  a {
+    font-weight: 700;
+  }
+}
+
+// Gallery
+.gallery {
+  width: 95%;
+  max-width: none;
+  margin: .5rem auto;
+
+  &-img {
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &-btn {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    background-color: $primary;
+    color: $light;
+    display: block;
+    padding: .25rem .5rem;
+    line-height: 1;
+    z-index: $zindex-tooltip;
+
+    &:hover {
+      color: $light;
+      text-decoration: none;
+      background-color: $accent;
+    }
+  }
+}
+
+// Buttons
+
+.btn {
+  background-color: $secondary;
+  border-color: $secondary;
+
+  &:hover{
+    background-color: $primary;
+    border-color: $primary;
+  }
+}
+
+// Formatting
+
+.plain {
+  font-style: normal;
+  font-weight: 400;
+}
+
+.tiny {
+  text-align: center;
+  font-size: 12px;
+}
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  transition: border-top-color .3s ease-in-out;
+}
+
+// ---------- Transcript ---------- //
+
+.conversation-text {
+  display: block;
+  width: 90%;
+  margin: auto;
+
+  @media #{$md-break} {
+    width: 50%;
+  }
+
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: .75rem;
+    text-align: center;
+    
+    &:hover {
+      color: $accent;
+      text-decoration: none;
+
+      &::before {
+        background: linear-gradient(270deg, rgba($accent,1) 0%, rgba(255,255,255,0) 100%);
+      }
+      &::after  {
+        background: linear-gradient(90deg, rgba($accent,1) 0%, rgba(255,255,255,0) 100%);
+      }
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 40px;
+      margin: 1rem;
+      background: $primary;
+      background: linear-gradient(270deg, rgba($primary,1) 0%, rgba(255,255,255,0) 100%);
+    }
+
+    &::after  {
+      background: linear-gradient(90deg, rgba($primary,1) 0%, rgba(255,255,255,0) 100%);
+    }
+  }
+
+  &-content {
+    display: flex;
+    font-size: 14px;
+    font-style: italic;
+    color: $d-gray;
+    border-bottom: 1px solid  rgba(31,41,46,.1);
+    padding-bottom: 2rem;
+
+    ul {
+      margin: auto;
+      padding: 0;
+      list-style: none;
+
+      li {
+        font-weight: bold;
+      }
+
+      ul {
+        margin: 0 1rem;
+        padding: 0 1rem;
+        list-style: square;
+
+        li {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+// ---------- Dark Mode ---------- //
+
+.dark-mode {
+  background-color: $dark;
+
+  .section {
+    color: $m-gray;
+    
+    a {
+      color: $light;
+      &:hover {
+        color:$l-gray;
+      }
+    }
+
+    h2 {
+      color: $primary;
+    }
+  }
+
+  hr {
+    border-top-color: rgba($light, .5);
+  }
+
+  .modal-header {
+    background-color: $secondary;
+    color: $m-gray;
+    border-color: $secondary;
+
+    .close {
+      color: $m-gray;
+    }
+  }
+
+  .modal-content {
+    background-color: $dark;
+    color: $m-gray;
+
+    .social-media {
+      a {
+        color: $light;
+  
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+
+    a {
+      color: $light;
+    }
+  }
+
+  .conversation-text {
+    &-btn {
+      &::before {
+        background: linear-gradient(270deg, rgba($light,1) 0%, rgba(255,255,255,0) 100%);
+      }
+      &::after  {
+        background: linear-gradient(90deg, rgba($light,1) 0%, rgba(255,255,255,0) 100%);
+      }
+
+      &:hover {
+        &::before {
+          background: linear-gradient(270deg, rgba($l-gray,1) 0%, rgba(255,255,255,0) 100%);
+        }
+        &::after  {
+          background: linear-gradient(90deg, rgba($l-gray,1) 0%, rgba(255,255,255,0) 100%);
+        }
+      }
+    }
+    &-content {
+      color: $m-gray;
+    }
+  }
+}
+
+// ---------- Animations ---------- //
+
+
+// Box Shadow
+@mixin box-shadow {
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+    0 2px 2px rgba(0,0,0,0.12), 
+    0 4px 4px rgba(0,0,0,0.12), 
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+}
+
+// Display Pic
+@mixin dp($side: null, $image) {
+  &::#{$side} {
+    content: '';
+    display: inline-block;
+    margin: 1rem 0;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: #333;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px solid #C8CDD0;
+    background-image: url(../img/#{$image}.jpg);
+
+    @include box-shadow();
+    
+    @media #{$xxs-break} {
+      width: 45px;
+      height: 45px;
+    }
+  }
+}
+
+// Time Stamp
+@mixin timestamp($convo, $msg, $side, $time) {
+  // Convo is letter
+  // Msg is number within convo
+  // Name is a string (asami or korra)
+  // Time is a string
+
+  ##{$convo}-msg-#{$msg}::#{$side} {
+    @if($side == after) {
+      content: 'Asami // #{$time}';
+    } 
+    @else {
+      content: 'Korra // #{$time}';
+    }
+  }
+}
+
+// Time Stamp Style 
+@mixin timestamp-style {
+  position: absolute;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: .75rem;
+  bottom: -.5rem;
+  opacity: .5;
+}
+
+.scene {
+
+  .frame {
+    width: 100%;
+    height: 650px;
+    // backdrop-filter: blur(5px);
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media #{$md-break} {
+      justify-content: flex-end;
+    }
+  }
+
+}
+
+.msg {
+  &-container {
+    width: 500px;
+    background: none;
+    box-shadow: none;
+    padding: 1rem;
+
+    @media #{$xs-break} {
+      width: 100%;
+      margin: auto;
+      padding: 0;
+    }
+
+    @media #{$xxs-break} {
+      max-width: 311px;
+    }
+
+
+  }
+
+  &-content {
+    height: 650px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &-text {
+    display: flex;
+    align-items: flex-start;
+    position: absolute;
+    // animation-iteration-count: infinite;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    visibility: hidden;
+
+    span {
+      //display: block;
+      padding: 1rem;
+      border-radius: .75rem;
+      margin: 1rem .5rem;
+      line-height: 1.5; 
+      min-height: 75px;
+      max-width: 275px;
+      flex: 1;
+
+      @include box-shadow();
+
+      @media #{$xs-break} {
+        font-size: 14px;
+      }
+    }
+
+    img {
+      // object-fit: cover;
+      // height: 300px;
+      width: 100%;
+    }
+
+  }
+
+  &-send {
+    justify-content: flex-end;
+    margin-right: 2rem;
+
+    @media #{$xxs-break} {
+      margin-right: 0;
+    }
+
+    span {
+      background-color: $accent;
+      color: $l-gray;
+      // text-align: right;
+    }
+    
+    @include dp(after, k);
+
+    
+    &::before {
+      @include timestamp-style();
+      left: 1rem;
+    }
+  }
+
+  &-receive {
+    span {
+      background-color: $l-gray;
+    }
+
+    @include dp(before, a);
+
+    &::after {
+      @include timestamp-style();
+      right: 1rem;
+    }
+  }
+
+}
+
+// ---------- CONVERSATIONS ---------- //
+
+// Common Variables
+
+$thread-height: 650px;
+$offset: 10px;
+$msg-spacing: 1.5em;
+$msg-clearance: 100px;
+
+// Start point to avoid flash
+.play .msg-text {
+  visibility: visible;
+}
+
+// CONVERSATION A ------------------- //
+
+@import 'convo-a';
+
+// CONVERSATION B ------------------- //
+
+@import 'convo-b';
+
+// CONVERSATION C ------------------- //
+
+@import 'convo-c';
+
+// CONVERSATION D ------------------- //
+
+@import 'convo-d';
+
+// CONVERSATION E ------------------- //
+
+@import 'convo-e';
+
+
+// CONVERSATION F ------------------- //
+
+@import 'convo-f';
+
+//Custom
+#f-msg-2,
+#f-msg-4 {
+  align-items: center;
+  span {
+    min-height: auto;
+    min-width: 110px;
+  }
+  &::before {
+    @media #{$sm-break} {
+      bottom: .25rem
+    }
+  }
+}
