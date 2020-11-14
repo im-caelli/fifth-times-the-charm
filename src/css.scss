@@ -600,6 +600,18 @@ header {
   text-align: center;
   font-size: 12px;
 }
+
+.feedback {
+  .btn {
+    font-size: 11px;
+    margin: 0;
+    line-height: 1;
+    vertical-align: top;
+    padding: 3px;
+  }
+}
+
+
 hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
