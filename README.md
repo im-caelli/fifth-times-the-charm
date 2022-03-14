@@ -18,8 +18,8 @@ This is definitely for fun. It's kind of superficial and dumb, and just short of
 
 The fic can also be found on AO3 and the art is dumped on my Tumblr.
 
-- AO3 Link
-- Tumblr Post
+- [AO3 Link](https://archiveofourown.org/works/27499624)
+- [Tumblr Post](https://im-caelli.tumblr.com/tagged/collection%20thirst%20traps)
 
 ## Dev Notes
 
